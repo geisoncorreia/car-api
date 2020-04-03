@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/v1")
 public class CarController {
@@ -16,7 +18,7 @@ public class CarController {
     private CarRepository carRepository;
 
     @GetMapping("/car/{id}")
-    public ResponseEntity<Car> getCarById(@PathVariable(value = "id") String carId) throws ResourceNotFoundException {
+    public ResponseEntity<Car> getCarById(@PathVariable(value = "id") UUID carId) throws ResourceNotFoundException {
       Car car = carRepository.findById(carId)
               .orElseThrow(() -> new ResourceNotFoundException("Carro não encontrado para o id :: " + carId));
 
