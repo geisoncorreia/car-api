@@ -17,4 +17,10 @@ public class Fabricante {
 
     @Column(nullable = false)
     private String descricao;
+
+    public Fabricante(String descricao) {
+        setDescricao(descricao);
+    }
+
+    public Fabricante(){};
 }

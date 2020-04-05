@@ -3,7 +3,6 @@ package com.example.apirest.demo.controller;
 import com.example.apirest.demo.exception.ResourceNotFoundException;
 import com.example.apirest.demo.model.Car;
 import com.example.apirest.demo.repository.CarRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +13,11 @@ import java.util.UUID;
 @RequestMapping("/api/v1")
 public class CarController {
 
-    @Autowired
-    private CarRepository carRepository;
+    private final CarRepository carRepository;
+
+    public CarController(CarRepository carRepository) {
+        this.carRepository = carRepository;
+    }
 
     @GetMapping("/car/{id}")
     public ResponseEntity<Car> getCarById(@PathVariable(value = "id") UUID carId) throws ResourceNotFoundException {

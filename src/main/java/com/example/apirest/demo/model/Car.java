@@ -1,6 +1,7 @@
 package com.example.apirest.demo.model;
 
 import lombok.Data;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -22,5 +23,6 @@ public class Car {
     private String cor;
 
     @ManyToOne
+    @Cascade(org.hibernate.annotations.CascadeType.PERSIST)
     private Modelo modelo;
 }

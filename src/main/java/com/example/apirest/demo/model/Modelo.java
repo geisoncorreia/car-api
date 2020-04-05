@@ -1,6 +1,7 @@
 package com.example.apirest.demo.model;
 
 import lombok.Data;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -19,6 +20,7 @@ public class Modelo {
     private String descricao;
 
     @ManyToOne
+    @Cascade(org.hibernate.annotations.CascadeType.PERSIST)
     private Fabricante fabricante;
 
 }
